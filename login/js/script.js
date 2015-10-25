@@ -1,6 +1,6 @@
 /*
   Wrong Password -> "checkPassword": false
-  
+
 */
 
 $("#login_submit").click(function (){
@@ -12,8 +12,22 @@ $("#login_submit").click(function (){
   data["mail"] =  mail;
   data['type'] = "login";
 
-  $.getJSON("http://localhost:3000/talhat/login/", data, function (data) {
+  $.getJSON("http://localhost:3000/login/", data, function (data) {
     console.log(data);
   });
 
+});
+
+$("#signup_submit").click(function () {
+  var data = {};
+
+  data['name'] = $("#signup_name").val();
+  data['passion'] = $("#signup_passion").val();
+  data['mail'] = $("#signup_mail").val();
+  data['password'] = $("#signup_password").val();
+  data['rep_password'] = $("#signup_rep_password").val();
+
+  $.getJSON("http://localhost:3000/signup/", data, function (data){
+    console.log(data);
+  })
 });

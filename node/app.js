@@ -10,28 +10,30 @@ function getQuery(req){ // Parse the url for parameters
   return url_parts.query
 }
 
-app.get('/talhat/login/', function (req, res) {
+app.get('/login/', function (req, res) {
 
   var query = getQuery(req);
 
-  if(query['type'] == "login"){  // If request is from Login page
-    mongo.checkUser(query.mail, function result(err, docs){ // check if mailID exists in DB
-      if(docs.found){
-        mongo.getUser(query.mail, query.password, function result(err, docs){ // Check if the password is correct
-          console.log(docs);
-          if(docs.length == 0)
-            res.send({"checkPassword": false});
-          else {
-              // set session
-              res.send({"status": "everythins ok"}); // testing
-            }
-        });
-      }else {
-        res.send({"userExist": false});
-      }
-    });
-  }
+  mongo.checkUser(query.mail, function result(err, docs){ // check if mailID exists in DB
+    if(docs.found){
+      mongo.getUser(query.mail, query.password, function result(err, docs){ // Check if the password is correct
+        console.log(docs);
+        if(docs.length == 0)
+          res.send({"checkPassword": false});
+        else {
+            // set session
+            res.send({"status": "everythins ok"}); // testing
+          }
+      });
+    }else {
+      res.send({"userExist": false});
+    }
+  });
 
+});
+
+app.get('/signup', function (req, res){
+  var query = getQuery(req);
 });
 
 app.listen(3000, function (){
