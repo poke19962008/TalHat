@@ -15,7 +15,17 @@ app.get('/talhat/login/', function (req, res) {
   var query = getQuery(req);
 
   mongo.checkUser(query.mail, function result(err, docs){
-    res.send(docs);
+    if(docs.found){
+      mongo.getUser(query.mail, query.password, function result(err, docs){
+        if(docs == {})
+          res.send({"checkPassword": false});
+        else {
+            // set session
+          }
+      });
+    }else {
+      res.send({"userExist": false});
+    }
   });
 
 });
