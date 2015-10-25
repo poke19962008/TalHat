@@ -6,7 +6,8 @@ $("#login_submit").click(function (){
   data["password"] = password;
   data["mail"] =  mail;
   data['type'] = "login";
-  $.getJSON("http://localhost:3000/talhat/login/index.html", data, function (data) {
+
+  $.getJSON("http://localhost:3000/talhat/login/", data, function (data) {
     console.log(data);
   });
 
