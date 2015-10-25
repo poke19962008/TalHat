@@ -22,6 +22,7 @@ app.get('/login/', function (req, res) {
           res.send({"checkPassword": false});
         else {
             // set session
+            // and redirect to profile page
             res.send({"status": "success"}); // testing
           }
       });
