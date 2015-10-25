@@ -7,8 +7,8 @@ var app = express();
 
 
 app.get('/talhat/login/index.html', function (req, res) {
-  mongo.getUser("poke19962008", "dass", function result(err, docs){
-    res.send(docs[0]);
+  mongo.checkUser("poke19962008", function result(err, docs){
+    res.send(docs);
   });
 
 });
