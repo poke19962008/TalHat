@@ -14,19 +14,23 @@ app.get('/talhat/login/', function (req, res) {
 
   var query = getQuery(req);
 
-  mongo.checkUser(query.mail, function result(err, docs){
-    if(docs.found){
-      mongo.getUser(query.mail, query.password, function result(err, docs){
-        if(docs == {})
-          res.send({"checkPassword": false});
-        else {
-            // set session
-          }
-      });
-    }else {
-      res.send({"userExist": false});
-    }
-  });
+  if(query['type'] == "login"){
+    mongo.checkUser(query.mail, function result(err, docs){
+      if(docs.found){
+        mongo.getUser(query.mail, query.password, function result(err, docs){
+          console.log(docs);
+          if(docs.length == 0)
+            res.send({"checkPassword": false});
+          else {
+              // set session
+              res.send({"status": "everythins ok"});
+            }
+        });
+      }else {
+        res.send({"userExist": false});
+      }
+    });
+  }
 
 });
 
