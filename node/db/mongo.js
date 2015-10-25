@@ -25,13 +25,15 @@ var queries = {
     });
   },
 
-  "insertData": function (mail, password, passion, name){
+  "insertData": function (mail, password, passion, name, result){
     mongoClient.connect(url,  function (err, db){
       var cur = db.collection('user_details').insert({
         "mail": mail,
         "password": password,
         "passion": passion,
         "name": name
+      }, function (err, results){
+        result(err);
       });
     });
   }

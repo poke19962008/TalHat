@@ -27,7 +27,9 @@ $("#signup_submit").click(function () {
   data['password'] = $("#signup_password").val();
   data['rep_password'] = $("#signup_rep_password").val();
 
+  console.log(data);
+
   $.getJSON("http://localhost:3000/signup/", data, function (data){
     console.log(data);
-  })
+  });
 });

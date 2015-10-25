@@ -22,7 +22,7 @@ app.get('/login/', function (req, res) {
           res.send({"checkPassword": false});
         else {
             // set session
-            res.send({"status": "everythins ok"}); // testing
+            res.send({"status": "success"}); // testing
           }
       });
     }else {
@@ -34,6 +34,23 @@ app.get('/login/', function (req, res) {
 
 app.get('/signup', function (req, res){
   var query = getQuery(req);
+
+  mongo.checkUser(query.mail, function result(err, docs){
+    if(docs.found)
+      res.send({ "userExist": true });
+    else {
+      mongo.insertData(
+        query.mail,
+        query.password,
+        query.passion,
+        query.name
+      , function result(err){
+        if(err) res.send({"satasus": "Server Fault"});
+        else res.send({"status":  "success"});
+
+      });
+    }
+  });
 });
 
 app.listen(3000, function (){
