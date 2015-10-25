@@ -1,3 +1,5 @@
+// This is for Global Mongo Queries
+
 var mongoClient = require('mongodb').MongoClient;
 var config=require('../config.js').load()["mongodb"];
 

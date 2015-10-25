@@ -1,3 +1,8 @@
+/*
+  Wrong Password -> "checkPassword": false
+  
+*/
+
 $("#login_submit").click(function (){
   var password = $("#login_pass").val();
   var mail = $("#login_mail").val();
