@@ -9,8 +9,8 @@ var nodeHost = "http://localhost:3000/"; // TODO: wrap with closure
 
 function setModal(title, message){
   $("#modal_error").modal('show');
-  $("#modal_title").add(message);
-  $("#modal_message").add(title);
+  $("#modal_title").html(title);
+  $("#modal_message").html(message);
 }
 
 $("#login_submit").click(function (){
@@ -23,10 +23,13 @@ $("#login_submit").click(function (){
   data['type'] = "login";
 
   $.getJSON(nodeHost + "login/", data, function (data) {
-
+    console.log(data);
     // Customize modal_error with the response
-    if(!data.userExists)
+    if(!data['userExist'])
       setModal("404 Not Found", "Enter correct mail ID and password.");
+
+    if(data.status == "success")
+      setModal("sucess", "true");
 
     // Redirect to profile page
     // set seassion

@@ -17,13 +17,13 @@ app.get('/login/', function (req, res) {
   mongo.checkUser(query.mail, function result(err, docs){ // check if mailID exists in DB
     if(docs.found){
       mongo.getUser(query.mail, query.password, function result(err, docs){ // Check if the password is correct
-        console.log(docs);
+
         if(docs.length == 0)
           res.send({"checkPassword": false});
         else {
             // set session
             // and redirect to profile page
-            console.log("[SUCCESS]"+query.mail+"logged in.");
+            console.log("[SUCCESS]"+query.mail+" logged in.");
             res.send({"status": "success"}); // testing
           }
       });
