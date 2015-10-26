@@ -50,7 +50,7 @@ app.get('/signup', function (req, res){
       , function result(err){
         if(err){
           console.log("[ERROR] "+query.mail+" insertion failed.");
-          res.send({"status": "Server Fault"});
+          res.send({"status": "serverFault"});
         }
         else {
           console.log("[SUCCESS] "+query.mail+" insertion successfull.");

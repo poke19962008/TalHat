@@ -2,10 +2,16 @@
   Wrong Password -> "checkPassword": false
   Success ->"status": "success"
   User exists -> "userExists":  false
-  Server fault -> "status" : "Server Fault"
+  Server fault -> "status" : "serverFault"
 */
 
-var nodeHost = "http://localhost:3000/"; // TODO: add closure on it
+var nodeHost = "http://localhost:3000/"; // TODO: wrap with closure
+
+function setModal(title, message){
+  $("#modal_error").modal('show');
+  $("#modal_title").add(message);
+  $("#modal_message").add(title);
+}
 
 $("#login_submit").click(function (){
   var password = $("#login_pass").val();
@@ -18,6 +24,12 @@ $("#login_submit").click(function (){
 
   $.getJSON(nodeHost + "login/", data, function (data) {
 
+    // Customize modal_error with the response
+    if(!data.userExists)
+      setModal("404 Not Found", "Enter correct mail ID and password.");
+
+    // Redirect to profile page
+    // set seassion
   });
 
 });
@@ -32,6 +44,14 @@ $("#signup_submit").click(function () {
   data['rep_password'] = $("#signup_rep_password").val();
 
   $.getJSON(nodeHost + "signup/", data, function (data){
-    console.log(data);
+
+    // Customize modal_error with the response
+    if(data.status == "serverFault")
+      setModal("Something went wrong!!", "Come back later.");
+
+    if(data.userExist)
+      setModal("Taken", "Mail ID is already taken.");
+
+
   });
 });
