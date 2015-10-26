@@ -5,6 +5,8 @@
   Server fault -> "status" : "Server Fault"
 */
 
+var nodeHost = "http://localhost:3000/"; // TODO: add closure on it
+
 $("#login_submit").click(function (){
   var password = $("#login_pass").val();
   var mail = $("#login_mail").val();
@@ -14,8 +16,8 @@ $("#login_submit").click(function (){
   data["mail"] =  mail;
   data['type'] = "login";
 
-  $.getJSON("http://localhost:3000/login/", data, function (data) {
-    console.log(data);
+  $.getJSON(nodeHost + "login/", data, function (data) {
+
   });
 
 });
@@ -29,7 +31,7 @@ $("#signup_submit").click(function () {
   data['password'] = $("#signup_password").val();
   data['rep_password'] = $("#signup_rep_password").val();
 
-  $.getJSON("http://localhost:3000/signup/", data, function (data){
+  $.getJSON(nodeHost + "signup/", data, function (data){
     console.log(data);
   });
 });
