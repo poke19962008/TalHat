@@ -1,6 +1,6 @@
 # Node Files
 
-** config.js
+# ./config.js
 
 ```
 function load(){
@@ -20,4 +20,10 @@ function load(){
 
 export.load = load;
 
+```
+
+# Mongo
+
+```
+mongod --dbpath ./data
 ```
