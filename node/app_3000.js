@@ -23,10 +23,12 @@ app.get('/login/', function (req, res) {
         else {
             // set session
             // and redirect to profile page
+            console.log("[SUCCESS]"+query.mail+"logged in.");
             res.send({"status": "success"}); // testing
           }
       });
     }else {
+      console.log("[ERROR] "+query.mail+" entered wrong credentials.");
       res.send({"userExist": false});
     }
   });
@@ -46,8 +48,14 @@ app.get('/signup', function (req, res){
         query.passion,
         query.name
       , function result(err){
-        if(err) res.send({"satasus": "Server Fault"});
-        else res.send({"status":  "success"});
+        if(err){
+          console.log("[ERROR] "+query.mail+" insertion failed.");
+          res.send({"status": "Server Fault"});
+        }
+        else {
+          console.log("[SUCCESS] "+query.mail+" insertion successfull.");
+          res.send({"status":  "success"});
+      }
 
       });
     }
@@ -56,4 +64,5 @@ app.get('/signup', function (req, res){
 
 app.listen(3000, function (){
   console.log("Listening on port 3000");
+  console.log("This port accepts requests for login and signup.");
 })

@@ -1,6 +1,8 @@
 /*
   Wrong Password -> "checkPassword": false
-
+  Success ->"status": "success"
+  User exists -> "userExists":  false
+  Server fault -> "status" : "Server Fault"
 */
 
 $("#login_submit").click(function (){
@@ -26,8 +28,6 @@ $("#signup_submit").click(function () {
   data['mail'] = $("#signup_mail").val();
   data['password'] = $("#signup_password").val();
   data['rep_password'] = $("#signup_rep_password").val();
-
-  console.log(data);
 
   $.getJSON("http://localhost:3000/signup/", data, function (data){
     console.log(data);
