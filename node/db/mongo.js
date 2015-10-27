@@ -48,8 +48,20 @@ var queries = {
     return ;
   },
 
-  "getPassion": function (mail){
+  "getPassion": function (mail, result){
 
+    mongoClient.connect(url, function (err, db){
+      var cur = db.collection('user_details').find({
+        "mail": mail
+      },{
+        "passion": true,
+        "_id": false
+      });
+
+      cur.toArray(function (err, docs){
+        result(err, docs[0]);
+      });
+    });
   }
 
 };
