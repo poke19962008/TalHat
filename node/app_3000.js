@@ -82,4 +82,6 @@ app.listen(3000, function (){
   // mongo.getPassion("poke19962008@gmail.com", function result(err, doc){
   //   console.log(doc);
   // });
-})
+});
+
+exports.init = app;
