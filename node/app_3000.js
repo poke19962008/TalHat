@@ -65,7 +65,7 @@ app.get('/signup', function (req, res){
 app.get("/getAllPasions", function (req, res){
 
   mongo.getAllPasions( function result(err, docs){
-    if(err) res.send("status": "serverFault");
+    if(err) res.send({"status": "serverFault"});
     else res.send(docs)
   });
 
