@@ -1,3 +1,7 @@
+/*
+* This handles all the request from talhat.com/login page
+*/
+
 var express = require('express');
 var fs = require('fs');
 var mongo = require('./db/mongo.js').init();
@@ -10,7 +14,7 @@ function getQuery(req){ // Parse the url for parameters
   return url_parts.query
 }
 
-app.get('/login/', function (req, res) {
+app.get('/login', function (req, res) {
 
   var query = getQuery(req);
 
@@ -38,7 +42,7 @@ app.get('/login/', function (req, res) {
 app.get('/signup', function (req, res){
   var query = getQuery(req);
 
-  mongo.checkUser(query.mail, function result(err, docs){
+  mongo.checkUser(query.mail, function result(err, docs){ // Check if already user exist
     if(docs.found)
       res.send({ "userExist": true });
     else {
@@ -62,7 +66,7 @@ app.get('/signup', function (req, res){
   });
 });
 
-app.get("/getPassionsWithKeywords", function (req, res){
+app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when the user start typing his/her passion
   var query = getQuery(req);
 
   mongo.getPassionWithKeywords( query.keyword, function result(err, docs){
