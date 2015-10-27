@@ -36,6 +36,20 @@ var queries = {
         result(err);
       });
     });
+  },
+  "getAllPassion": function (result){
+    mongoClient.connect(url , function (err, db){
+      var cur = db.collection('passions').find();
+
+      cur.toArray(function (err, docs){
+        result(err, docs);
+      });
+    });
+    return ;
+  },
+
+  "getPassion": function (mail){
+
   }
 
 };
