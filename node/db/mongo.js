@@ -72,7 +72,29 @@ var queries = {
         result(err, docs[0]);
       });
     });
-  }
+  },
+  "getPassionWithKeywords": function (keyword, result){
+    mongoClient.connect(url, function (err, db){
+      var cur = db.collection('passions').find({
+        "passion":{
+          $regex: "^"+keyword,
+          $options: "i"
+        }
+      },{
+        "_id": false,
+        "passion": true
+      });
+
+      cur.toArray(function (err, docs){
+        var data = {};
+        data.passions = [];
+
+        for (var i = 0; i < docs.length; i++)  data.passions.push(docs[i].passion);
+
+        result(err, data);
+      });
+    });
+  },
 
 };
 
