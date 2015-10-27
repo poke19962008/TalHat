@@ -39,10 +39,20 @@ var queries = {
   },
   "getAllPassion": function (result){
     mongoClient.connect(url , function (err, db){
-      var cur = db.collection('passions').find();
+
+      var cur = db.collection('passions').find({}, {
+        "passion": true,
+        "_id": false
+      });
 
       cur.toArray(function (err, docs){
-        result(err, docs);
+        var data = {};
+        data.passions = [];
+
+        for (var i = 0; i < docs.length; i++)
+          data.passions.push(docs[i].passion);
+
+        result(err, data);
       });
     });
     return ;

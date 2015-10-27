@@ -67,7 +67,9 @@ app.listen(3000, function (){
   console.log("This port accepts requests for login and signup.");
 
   /* TEST: Mongo queries */
-  // mongo.getAllPassion();
+  // mongo.getAllPassion(function result(err, docs){
+  //   console.log(docs);
+  // });
   // mongo.getPassion("poke19962008@gmail.com", function result(err, doc){
   //   console.log(doc);
   // });
