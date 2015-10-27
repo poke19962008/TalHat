@@ -62,6 +62,14 @@ app.get('/signup', function (req, res){
   });
 });
 
+app.get("/getAllPasions", function (req, res){
+
+  mongo.getAllPasions( function result(err, docs){
+    res.send(docs);
+  });
+
+});
+
 app.listen(3000, function (){
   console.log("Listening on port 3000");
   console.log("This port accepts requests for login and signup.");
