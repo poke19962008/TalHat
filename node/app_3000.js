@@ -66,8 +66,8 @@ app.get("/getPassionsWithKeywords", function (req, res){
   var query = getQuery(req);
 
   mongo.getPassionWithKeywords( query.keyword, function result(err, docs){
-    res.send(docs);
-
+    if(err) res.send({"status": "serverFault"});
+    else res.send(docs);
   });
 
 });
