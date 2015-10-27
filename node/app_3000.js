@@ -62,11 +62,12 @@ app.get('/signup', function (req, res){
   });
 });
 
-app.get("/getAllPasions", function (req, res){
+app.get("/getPassionsWithKeywords", function (req, res){
+  var query = getQuery(req);
 
-  mongo.getAllPasions( function result(err, docs){
-    if(err) res.send({"status": "serverFault"});
-    else res.send(docs)
+  mongo.getPassionWithKeywords( query.keyword, function result(err, docs){
+    res.send(docs);
+
   });
 
 });
@@ -82,9 +83,9 @@ app.listen(3000, function (){
   // mongo.getPassion("poke19962008@gmail.com", function result(err, doc){
   //   console.log(doc);
   // });
-  mongo.getPassionWithKeywords("co", function result(err, docs){
-    console.log(docs);
-  });
+  // mongo.getPassionWithKeywords("co", function result(err, docs){
+  //   console.log(docs);
+  // });
 });
 
 exports.init = app;
