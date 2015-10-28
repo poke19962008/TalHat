@@ -58,3 +58,19 @@ $("#signup_submit").click(function () {
 
   });
 });
+
+function insertText(id){
+  $("#signup_passion").val($("#passionMenuItem"+id).text());
+}
+
+$("#signup_passion").keyup(function (){
+  var keyword = { "keyword": $("#signup_passion").val() };
+
+  $.getJSON(nodeHost + "getPassionsWithKeywords/", keyword, function (data){
+    $("#passionMenu").html("");
+    for (var i = 0; i < data.passions.length; i++) {
+      var li = "<li onclick=\"insertText("+i+")\" id=\"passionMenuItem"+i+"\"><a href=\"#\">" + data.passions[i] +"</a></li>";
+      $("#passionMenu").append(li);
+    }
+  });
+});
