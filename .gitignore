@@ -1,2 +1,3 @@
 node/config.js
 node/data/**
+node/automate/pyConfigs.json
