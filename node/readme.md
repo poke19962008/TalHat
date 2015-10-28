@@ -18,7 +18,7 @@ function load(){
 	};
 } 
 
-export.load = load;
+exports.load = load;
 
 ```
 

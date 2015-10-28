@@ -5,6 +5,14 @@
 var express = require('express');
 var fs = require('fs');
 var mongo = require('./db/mongo.js').init();
+var winston = require('winston');
+
+var logger = new (winston.Logger)({
+    transports: [
+      new (winston.transports.Console)(),
+      new (winston.transports.File)({ filename: 'log/port3000.log' })
+    ]
+  });
 
 var app = express();
 
@@ -27,12 +35,12 @@ app.get('/login', function (req, res) {
         else {
             // set session
             // and redirect to profile page
-            console.log("[SUCCESS]"+query.mail+" logged in.");
+            logger.log("info", "login | logged in ->", query.mail);
             res.send({"status": "success"}); // testing
           }
       });
     }else {
-      console.log("[ERROR] "+query.mail+" entered wrong credentials.");
+      logger.log("info" ,"login | wrong credential ->", query.mail);
       res.send({"userExist": false});
     }
   });
@@ -53,11 +61,11 @@ app.get('/signup', function (req, res){
         query.name
       , function result(err){
         if(err){
-          console.log("[ERROR] "+query.mail+" insertion failed.");
+          logger.log("error", "signup | mongo insertion failed ->", query.mail);
           res.send({"status": "serverFault"});
         }
         else {
-          console.log("[SUCCESS] "+query.mail+" insertion successfull.");
+          logger.log("info" ,"signup | new signup ->", query.mail);
           res.send({"status":  "success"});
       }
 
@@ -70,14 +78,19 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
   var query = getQuery(req);
 
   mongo.getPassionWithKeywords( query.keyword, function result(err, docs){
-    if(err) res.send({"status": "serverFault"});
+    if(err){
+      logger.log("info", "getPassionsWithKeywords | Mongo Retrieval Failed.");
+      res.send({"status": "serverFault"});
+  }
     else res.send(docs);
   });
 
 });
 
 app.listen(3000, function (){
+  logger.log("info" ,"SERVER STARTED");
   console.log("Listening on port 3000");
+
   console.log("This port accepts requests for login and signup.");
 
   /* TEST: Mongo queries */
