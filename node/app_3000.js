@@ -65,7 +65,7 @@ app.get('/signup', function (req, res){
           res.send({"status": "serverFault"});
         }
         else {
-          logger.log("info" ,"signup | new signup ->", query.mail);
+          logger.log("info" ,"signup | new user ->", query.mail);
           res.send({"status":  "success"});
       }
 

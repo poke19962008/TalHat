@@ -23,7 +23,7 @@ $("#login_submit").click(function (){
   data['type'] = "login";
 
   $.getJSON(nodeHost + "login/", data, function (data) {
-    console.log(data);
+
     // Customize modal_error with the response
     if(!data['userExist'])
       setModal("404 Not Found", "Enter correct mail ID and password.");
@@ -55,7 +55,6 @@ $("#signup_submit").click(function () {
     if(data.userExist)
       setModal("Taken", "Mail ID is already taken.");
 
-
   });
 });
 
@@ -63,7 +62,7 @@ function insertText(id){
   $("#signup_passion").val($("#passionMenuItem"+id).text());
 }
 
-$("#signup_passion").keyup(function (){
+$("#signup_passion").on("keyup click", function (){
   var keyword = { "keyword": $("#signup_passion").val() };
 
   $.getJSON(nodeHost + "getPassionsWithKeywords/", keyword, function (data){
