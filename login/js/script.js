@@ -67,8 +67,9 @@ $("#signup_passion").on("keyup click", function (){
 
   $.getJSON(nodeHost + "getPassionsWithKeywords/", keyword, function (data){
     $("#passionMenu").html("");
-    for (var i = 0; i < data.passions.length; i++) {
-      var li = "<li onclick=\"insertText("+i+")\" id=\"passionMenuItem"+i+"\"><a href=\"#\">" + data.passions[i] +"</a></li>";
+    for (var i = 0; i < data.length; i++) {
+      var li = "<li onclick=\"insertText("+i+")\" id=\"passionMenuItem"+i+"\"><a href=\"#\">" + data[i].passion +"</a></li>";
+    
       $("#passionMenu").append(li);
     }
   });

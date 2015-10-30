@@ -14,6 +14,12 @@ var logger = new (winston.Logger)({
     ]
   });
 
+  function getQuery(req){ // Parse the url for parameters
+    var url = require('url');
+    var url_parts = url.parse(req.url, true);
+    return url_parts.query
+  }
+
 var app = express();
 
 app.get("/getPassionsforProfile", function (req, res){

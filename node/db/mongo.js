@@ -87,16 +87,12 @@ var queries = {
         }
       },{
         "_id": false,
-        "passion": true
+        "passion": true,
+        "count": true,
       });
 
       cur.toArray(function (err, docs){
-        var data = {};
-        data.passions = [];
-
-        for (var i = 0; i < docs.length; i++)  data.passions.push(docs[i].passion);
-
-        result(err, data);
+        result(err, docs);
       });
     });
   },
