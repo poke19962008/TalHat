@@ -1,12 +1,21 @@
-/*
+/**
 * This handles all the request from talhat.com/login page
 */
 
+/**
+* All the required files
+*/
 var express = require('express');
 var fs = require('fs');
 var mongo = require('./db/mongo.js').init();
 var winston = require('winston');
 var auth = require('./auth');
+var session = require('express-session');
+var config = require('./config').load()['session'];
+
+/**
+* All the configarations of the packages
+*/
 
 var logger = new (winston.Logger)({
     transports: [
@@ -16,12 +25,21 @@ var logger = new (winston.Logger)({
   });
 
 var app = express();
+app.use(session({secret: config.key}));
 
+/**
+* All the globally accessible functions
+*/
 function getQuery(req){ // Parse the url for parameters
   var url = require('url');
   var url_parts = url.parse(req.url, true);
   return url_parts.query
 }
+
+
+/**
+* All the GET request accessible from this server port
+*/
 
 app.get('/login', function (req, res) {
 
@@ -36,9 +54,8 @@ app.get('/login', function (req, res) {
         if(docs.length == 0)
           res.send({"checkPassword": false});
         else {
-            // set session
-            // and redirect to profile page
             logger.log("info", "login | logged in ->", query.mail);
+            req.session.mail = query.mail;
             res.send({"status": "success"}); // testing
           }
       });
@@ -94,6 +111,10 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
 app.get("/test", function (req, res){
   console.log(req.seassion);
 });
+
+/**
+* Start the server on 3000
+*/
 
 app.listen(3000, function (){
   logger.log("info" ,"SERVER STARTED");

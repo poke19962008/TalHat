@@ -23,13 +23,12 @@ $("#login_submit").click(function (){
   data['type'] = "login";
 
   $.getJSON(nodeHost + "login/", data, function (data) {
-
+    console.log(!data.userExist);
     // Customize modal_error with the response
-    if(!data['userExist'])
-      setModal("404 Not Found", "Enter correct mail ID and password.");
-
     if(data.status == "success")
-      setModal("sucess", "true");
+      window.location = "../profile"
+    else if(!data.userExist)
+      setModal("404 Not Found", "Enter correct mail ID and password.");
 
     // Redirect to profile page
     // set seassion
@@ -69,7 +68,7 @@ $("#signup_passion").on("keyup click", function (){
     $("#passionMenu").html("");
     for (var i = 0; i < data.length; i++) {
       var li = "<li onclick=\"insertText("+i+")\" id=\"passionMenuItem"+i+"\"><a href=\"#\">" + data[i].passion +"</a></li>";
-    
+
       $("#passionMenu").append(li);
     }
   });
