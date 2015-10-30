@@ -102,7 +102,14 @@ var queries = {
   },
 
   "getPassionforProfile": function (result){
-
+    mongoClient.connect(url, function (err, db){
+      var cur = db.collection('passions').find({}, {
+        "_id": false,
+      });
+      cur.toArray(function (err, docs){
+        result(err, docs);
+      });
+    });
   }
 
 };

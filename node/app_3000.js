@@ -103,6 +103,9 @@ app.listen(3000, function (){
   // mongo.getPassionWithKeywords("co", function result(err, docs){
   //   console.log(docs);
   // });
+  // mongo.getPassionforProfile(function result(err, doc){
+  //   console.log(doc);
+  // });
 });
 
 exports.init = app;
