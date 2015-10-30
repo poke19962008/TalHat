@@ -16,7 +16,7 @@ passions = open("passions.txt", "r").read().split("\n")
 
 index = 0
 for passion in passions:
-    passion = passion.lower()
+    # passion = passion.lower()
     try:
         db.passions.insert({"passion": passion, "_id": index, "count": 0})
         index = index+1
