@@ -6,6 +6,7 @@ var express = require('express');
 var fs = require('fs');
 var mongo = require('./db/mongo.js').init();
 var winston = require('winston');
+var auth = require('./auth');
 
 var logger = new (winston.Logger)({
     transports: [
@@ -25,6 +26,8 @@ function getQuery(req){ // Parse the url for parameters
 app.get('/login', function (req, res) {
 
   var query = getQuery(req);
+
+  query.password = auth.encrypt(query.password);
 
   mongo.checkUser(query.mail, function result(err, docs){ // check if mailID exists in DB
     if(docs.found){
@@ -49,6 +52,8 @@ app.get('/login', function (req, res) {
 
 app.get('/signup', function (req, res){
   var query = getQuery(req);
+
+  query.password = auth.encrypt(query.password);
 
   mongo.checkUser(query.mail, function result(err, docs){ // Check if already user exist
     if(docs.found)

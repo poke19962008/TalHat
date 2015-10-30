@@ -19,5 +19,6 @@ $("#passion-keyword").on("click keyup", function (){
       var li = "<li style=\"padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 15px;\"><a href=\"../index.html\">#"+ data[i].passion +"  <span class=\"badge\">" + data[i].count +"</span></a></li>";
       $("#passions-list").append(li);
     }
+    
   });
 });
