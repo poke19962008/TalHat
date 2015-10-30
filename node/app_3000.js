@@ -10,13 +10,10 @@ var fs = require('fs');
 var mongo = require('./db/mongo.js').init();
 var winston = require('winston');
 var auth = require('./auth');
-var session = require('express-session');
-var config = require('./config').load()['session'];
 
 /**
 * All the configarations of the packages
 */
-
 var logger = new (winston.Logger)({
     transports: [
       new (winston.transports.Console)(),
@@ -25,7 +22,6 @@ var logger = new (winston.Logger)({
   });
 
 var app = express();
-app.use(session({secret: config.key}));
 
 /**
 * All the globally accessible functions
@@ -40,7 +36,6 @@ function getQuery(req){ // Parse the url for parameters
 /**
 * All the GET request accessible from this server port
 */
-
 app.get('/login', function (req, res) {
 
   var query = getQuery(req);
@@ -108,33 +103,15 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
 
 });
 
-app.get("/test", function (req, res){
-  console.log(req.seassion);
-});
 
 /**
 * Start the server on 3000
 */
-
 app.listen(3000, function (){
   logger.log("info" ,"SERVER STARTED");
   console.log("Listening on port 3000");
 
   console.log("This port accepts requests for login and signup.");
-
-  /* TEST: Mongo queries */
-  // mongo.getAllPassion(function result(err, docs){
-  //   console.log(docs);
-  // });
-  // mongo.getPassion("poke19962008@gmail.com", function result(err, doc){
-  //   console.log(doc);
-  // });
-  // mongo.getPassionWithKeywords("co", function result(err, docs){
-  //   console.log(docs);
-  // });
-  // mongo.getPassionforProfile(function result(err, doc){
-  //   console.log(doc);
-  // });
 });
 
 exports.init = app;

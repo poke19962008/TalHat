@@ -10,8 +10,6 @@ var express = require('express');
 var fs = require('fs');
 var mongo = require('./db/mongo.js').init();
 var winston = require('winston');
-var session = require('express-session');
-var config = require('./config').load()['session'];
 
 
 /**
@@ -25,7 +23,6 @@ var logger = new (winston.Logger)({
   });
 
 var app = express();
-app.use(session({secret: config.key}));
 
 /**
 * All the globally accessible functions
@@ -55,11 +52,6 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
   }
     else res.send(docs);
   });
-
-});
-
-app.get("/test", function (req, res){
-  console.log(req.session);
 
 });
 
