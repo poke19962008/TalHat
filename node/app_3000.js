@@ -81,7 +81,6 @@ app.get('/signup', function (req, res){
 
 app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when the user start typing his/her passion
   var query = getQuery(req);
-
   mongo.getPassionWithKeywords( query.keyword, function result(err, docs){
     if(err){
       logger.log("info", "getPassionsWithKeywords | Mongo Retrieval Failed.");
@@ -90,6 +89,10 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
     else res.send(docs);
   });
 
+});
+
+app.get("/test", function (req, res){
+  console.log(req.seassion);
 });
 
 app.listen(3000, function (){
