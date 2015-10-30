@@ -18,7 +18,7 @@ index = 0
 for passion in passions:
     passion = passion.lower()
     try:
-        db.passions.insert({"passion": passion, "_id": index})
+        db.passions.insert({"passion": passion, "_id": index, "count": 0})
         index = index+1
     except:
         print "[error] "+ passion + " failed to insert."

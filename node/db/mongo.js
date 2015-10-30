@@ -35,8 +35,12 @@ var queries = {
       }, function (err, results){
         result(err);
       });
+
+      var cur = db.collection('passions').update({"passion": passion}, {$inc : {"count": 1}});
+
     });
   },
+
   "getAllPassion": function (result){
     mongoClient.connect(url , function (err, db){
 
@@ -73,6 +77,7 @@ var queries = {
       });
     });
   },
+
   "getPassionWithKeywords": function (keyword, result){
     mongoClient.connect(url, function (err, db){
       var cur = db.collection('passions').find({
@@ -95,6 +100,10 @@ var queries = {
       });
     });
   },
+
+  "getPassionforProfile": function (result){
+
+  }
 
 };
 
