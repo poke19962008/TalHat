@@ -1,14 +1,9 @@
 var crypto = require('crypto');
-
-var encryption = {
-  "key": "iloveapple",
-  "algorithm": "sha1",
-  "digest": "hex"
-};
+var config = require('./config')['auth'];
 
 function encrypt(data) {
-  var sha = crypto.createHash(encryption.algorithm, encryption.key);
-  var gen = sha.update(data).digest(encryption.digest);
+  var sha = crypto.createHash(auth.algorithm, auth.key);
+  var gen = sha.update(data).digest(auth.digest);
   return gen;
 }
 
