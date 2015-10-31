@@ -55,3 +55,35 @@
 {"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-30T19:41:10.217Z"}
 {"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-30T19:41:14.940Z"}
 {"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-30T19:41:33.065Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T20:03:21.629Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T20:43:41.545Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T20:44:42.597Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T20:46:23.846Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:04:12.936Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:05:46.566Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:06:58.666Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:07:26.644Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:07:48.788Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:08:18.593Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:10:01.204Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:12:38.099Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:15:59.649Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:16:36.851Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:17:09.480Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:17:58.422Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:19:05.267Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:25:36.984Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-30T21:58:38.803Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-31T09:36:31.962Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-31T09:36:49.349Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-31T09:38:13.860Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-31T09:38:19.747Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-31T09:41:00.646Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-31T09:41:04.864Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-31T09:44:43.214Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-31T09:44:46.083Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-31T09:47:24.195Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-31T09:47:28.752Z"}
+{"level":"info","message":"SERVER STARTED","timestamp":"2015-10-31T09:48:10.284Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-31T09:48:12.745Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-10-31T10:44:50.953Z"}

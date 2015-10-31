@@ -6,7 +6,8 @@
 /**
 * All the required files
 */
-var express = require('express');
+// var express = require('express');
+var app = require('./expressApp').port_3000;
 var fs = require('fs');
 var mongo = require('./db/mongo.js').init();
 var winston = require('winston');
@@ -22,7 +23,6 @@ var logger = new (winston.Logger)({
     ]
   });
 
-var app = express();
 
 /**
 * All the globally accessible functions

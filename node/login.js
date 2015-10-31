@@ -5,7 +5,8 @@
 /**
 * All the required files
 */
-var express = require('express');
+// var express = require('express');
+var app = require('./expressApp').port_3000;
 var fs = require('fs');
 var mongo = require('./db/mongo.js').init();
 var winston = require('winston');
@@ -21,7 +22,6 @@ var logger = new (winston.Logger)({
     ]
   });
 
-var app = express();
 
 /**
 * All the globally accessible functions
@@ -50,7 +50,14 @@ app.get('/login', function (req, res) {
           res.send({"checkPassword": false});
         else {
             logger.log("info", "login | logged in ->", query.mail);
-            req.session.mail = query.mail;
+
+            // res.cookie("test", "success", {
+            //   path: '/test',
+            //   secure: false,
+            //   expires: new Date(Date.now() + 900000),
+            //   httpOnly: true
+            // });
+
             res.send({"status": "success"}); // testing
           }
       });
@@ -83,8 +90,8 @@ app.get('/signup', function (req, res){
         }
         else {
           logger.log("info" ,"signup | new user ->", query.mail);
-          res.send({"status":  "success"});
-      }
+          res.send({"success": "success"});
+        }
 
       });
     }
@@ -107,11 +114,9 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
 /**
 * Start the server on 3000
 */
-app.listen(3000, function (){
-  logger.log("info" ,"SERVER STARTED");
-  console.log("Listening on port 3000");
-
-  console.log("This port accepts requests for login and signup.");
-});
-
-exports.init = app;
+// app.listen(3000, function (){
+//   logger.log("info" ,"SERVER STARTED");
+//   console.log("Listening on port 3000");
+//
+//   console.log("This port accepts requests for login and signup.");
+// });

@@ -106,7 +106,7 @@ var queries = {
         result(err, docs);
       });
     });
-  }
+  },
 
 };
 
