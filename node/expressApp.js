@@ -10,6 +10,10 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var config = require('./config').load()['session'];
 
+
+/**
+** All the express apps 
+*/
 var app_3000 = express();
 
 /**

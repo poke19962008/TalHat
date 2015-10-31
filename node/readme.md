@@ -16,6 +16,16 @@ function load(){
 		"host": "...";
 		"password": "...",
 	};
+
+	config['auth'] = {
+		"key": '....',
+		"algorithm": '....',
+		"digest": '...'
+	};
+
+	config['session'] = {
+		"key": "...."
+	};
 } 
 
 exports.load = load;
@@ -25,5 +35,6 @@ exports.load = load;
 # Mongo
 
 ```
-mongod --dbpath ./data
+$ sudo rm -rf ./data
+$ sudo mongod --dbpath ./data
 ```
