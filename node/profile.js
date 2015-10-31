@@ -54,13 +54,3 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
   });
 
 });
-
-/**
-* Start the server on 3000
-*/
-app.listen(3001, function (){
-  logger.log("info" ,"SERVER STARTED");
-  console.log("Listening on port 3001");
-
-  console.log("This port accepts requests for profile.");
-})
