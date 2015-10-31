@@ -5,7 +5,6 @@
 /**
 * All the required files
 */
-// var express = require('express');
 var app = require('./expressApp').port_3000;
 var fs = require('fs');
 var mongo = require('./db/mongo.js').init();
@@ -109,3 +108,5 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
   });
 
 });
+
+exports.init = app;

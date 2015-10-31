@@ -1,8 +1,13 @@
-// Add all the servers here and initialise it
+/**
+** Include all the files which are using expressApp
+*/
 
-// For talhat.com/login page
-// PORT: 8080
-// GET ./login
-// GET ./signup
-// GET ./getPassionsWithKeywords
-var server1 = require("./app_3000").init;
+var login = require('./login');
+var profile = require('./profile');
+
+
+/**
+** Initialise all the files
+*/
+login.init;
+profile.init;
