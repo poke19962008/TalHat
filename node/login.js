@@ -50,12 +50,8 @@ app.get('/login', function (req, res) {
         else {
             logger.log("info", "login | logged in ->", query.mail);
 
-            // res.cookie("test", "success", {
-            //   path: '/test',
-            //   secure: false,
-            //   expires: new Date(Date.now() + 900000),
-            //   httpOnly: true
-            // });
+            // req.session.mail = query.mail;
+            // req.session.password = query.password;
 
             res.send({"status": "success"}); // testing
           }
@@ -82,6 +78,7 @@ app.get('/signup', function (req, res){
         query.password,
         query.passion,
         query.name
+
       , function result(err){
         if(err){
           logger.log("error", "signup | mongo insertion failed ->", query.mail);
@@ -107,6 +104,15 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
     else res.send(docs);
   });
 
+});
+
+
+/**
+** TESTING
+*/
+app.get("/test", function (req, res){
+  req.session.test = "poke";
+  res.send("<a href=/test1>click</a>");
 });
 
 exports.init = app;
