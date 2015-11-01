@@ -51,6 +51,9 @@ $("#signup_submit").click(function () {
     if(data.status == "serverFault")
       setModal("Something went wrong!!", "Come back later.");
 
+    if(data.status == "PassionNotExist")
+      setModal("Passion do not exist", "Choose passion from the dropdown");
+
     if(data.userExist)
       setModal("Taken", "Mail ID is already taken.");
 

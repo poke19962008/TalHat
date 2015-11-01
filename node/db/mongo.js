@@ -108,6 +108,25 @@ var queries = {
     });
   },
 
+  "checkPassionExist": function (passion, result){
+    mongoClient.connect(url, function (err, db){
+      var cur = db.collection('passions').find({
+        "passion": passion,
+      },{
+        "_id": false,
+        "count": false,
+      });
+
+      cur.toArray(function (err, docs){
+        if(docs.length == 0)
+          result({ "found": false });
+        else
+          result({ "found": true });
+      });
+
+    });
+  },
+
 };
 
 function init(){

@@ -78,23 +78,30 @@ app.get('/signup', function (req, res){
     if(docs.found)
       res.send({ "userExist": true });
     else {
-      mongo.insertData(
-        query.mail,
-        query.password,
-        query.passion,
-        query.name
+      mongo.checkPassionExist( query.passion, function (res){ // check if passion exist in DB
+        if(res){
+          mongo.insertData( // Insert data
+            query.mail,
+            query.password,
+            query.passion,
+            query.name
 
-      , function result(err){
-        if(err){
-          logger.log("error", "signup | mongo insertion failed ->", query.mail);
-          res.send({"status": "serverFault"});
+          , function result(err){
+            if(err){
+              logger.log("error", "signup | mongo insertion failed ->", query.mail);
+              res.send({"status": "serverFault"});
+            }
+            else {
+              logger.log("info" ,"signup | new user ->", query.mail);
+              res.send({"success": "success"});
+            }
+          });
         }
         else {
-          logger.log("info" ,"signup | new user ->", query.mail);
-          res.send({"success": "success"});
+          res.send({"status": "PassionNotExist"})
         }
-
       });
+
     }
   });
 });
@@ -115,9 +122,10 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
 /**
 ** TESTING
 */
-app.get("/test", function (req, res){
-  req.session.test = "poke";
-  res.send("<a href=/test1>click</a>");
-});
+// app.get("/test", function (req, res){
+//   mongo.checkPassionExist("Coder", function result(res){
+//     console.log(res);
+//   })
+// });
 
 exports.init = app;
