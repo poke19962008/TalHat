@@ -50,10 +50,15 @@ app.get('/login', function (req, res) {
         else {
             logger.log("info", "login | logged in ->", query.mail);
 
-            // req.session.mail = query.mail;
-            // req.session.password = query.password;
+            req.session.mail = query.mail;
+            req.session.password = query.password;
 
-            res.send({"status": "success"}); // testing
+            req.session.save(function (err){
+              if(err)
+                res.send({"status": "failed"});
+              else
+                res.send({"status": "success"});
+            });
           }
       });
     }else {
