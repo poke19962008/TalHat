@@ -9,6 +9,7 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mongoStore = require('connect-mongo')(session);
+var fs = require('fs');
 
 var sess_config = require('./config').load()['session'];
 var mongo_config = require('./config').load()['mongodb'];
@@ -37,9 +38,20 @@ app_3000.use(session({        // Session configs
   store: new mongoStore({     // Mongo Store configs
     url: mongo_config.mongo_path,
     autoRemove: 'native', // Remove all the expired sessions
-    collection: 'session', // COllection name 
+    collection: 'session', // COllection name
   }),
 }));
+
+/**
+** Configs for static pages
+*/
+app_3000.use(express.static(__dirname + "/public"));
+
+/**
+**  Configs for template engine
+*/
+app_3000.set('views', __dirname + '/views');
+app_3000.set('view engine', 'jade');
 
 /**
 * Start the server on 3000

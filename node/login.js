@@ -78,8 +78,8 @@ app.get('/signup', function (req, res){
     if(docs.found)
       res.send({ "userExist": true });
     else {
-      mongo.checkPassionExist( query.passion, function (res){ // check if passion exist in DB
-        if(res){
+      mongo.checkPassionExist( query.passion, function (result){ // check if passion exist in DB
+        if(result.found){
           mongo.insertData( // Insert data
             query.mail,
             query.password,
@@ -93,7 +93,7 @@ app.get('/signup', function (req, res){
             }
             else {
               logger.log("info" ,"signup | new user ->", query.mail);
-              res.send({"success": "success"});
+              res.send({"status": "success"});
             }
           });
         }
