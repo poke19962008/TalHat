@@ -59,9 +59,9 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
 /**
 ** TESTING
 */
-// app.get("/test1", function (req, res){
-//   res.send(req.session.test);
-//   console.log(req.session);
-// });
+app.get("/test1", function (req, res){
+  res.render("profile.jade");
+  console.log(req.session);
+});
 
 exports.init = app;

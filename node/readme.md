@@ -26,7 +26,9 @@ function load(){
 	config['session'] = {
 		"key": "...."
 	};
-} 
+}
+
+return config;
 
 exports.load = load;
 
