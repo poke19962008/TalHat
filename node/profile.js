@@ -61,7 +61,7 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
 */
 app.get("/test1", function (req, res){
   res.render("profile.jade");
-  console.log(req.session);
+  // console.log(req.session);
 });
 
 exports.init = app;
