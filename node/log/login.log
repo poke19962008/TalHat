@@ -2,3 +2,8 @@
 {"level":"info","message":"login | wrong credential -> test@test.com","timestamp":"2015-11-04T15:48:03.136Z"}
 {"level":"info","message":"login | logged in -> test@gmail.com","timestamp":"2015-11-04T15:48:13.038Z"}
 {"level":"info","message":"signup | new user -> test@test.com","timestamp":"2015-11-19T01:03:38.878Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-19T03:45:28.452Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-19T03:54:38.551Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-19T04:11:15.419Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-19T04:17:52.581Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-19T04:25:21.975Z"}

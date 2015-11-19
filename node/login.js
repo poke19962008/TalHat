@@ -43,9 +43,9 @@ app.get('/login', function (req, res) {
 
   mongo.checkUser(query.mail, function result(err, docs){ // check if mailID exists in DB
     if(docs.found){
-      mongo.getUser(query.mail, query.password, function result(err, docs){ // Check if the password is correct
+      mongo.verifyUser(query.mail, query.password, function result(err, docs){ // Check if the password is correct
 
-        if(docs.length == 0)
+        if(!docs.isValid)
           res.send({"checkPassword": false});
         else {
             logger.log("info", "login | logged in ->", query.mail);

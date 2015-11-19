@@ -3,7 +3,9 @@
 .col-lg-5(style='border-left:solid 2px #e7e7e7')
   .panel(style='margin-top:2%;')
     .panel-heading.popular-pas
-      span#name(div='') Kshitiz Sharma
+      span#name(div='') 
+        //- Name goes here 
+        = name
     
       span.recog_number.pull-right(div='')
         button.btn.btn-primary.btn-sm(type='button') Recognise
@@ -11,7 +13,9 @@
     .panel-body(style='align-content:center')
       .panel-footer(style='border:solid 1px #e7e7e7')
         span.pull-left
-          .passion #CODER
+          .passion 
+            //- Passion goes here
+            = "#" + passion
         .text-right
           .huge-2 975
         .clearfix
@@ -25,7 +29,8 @@
     
     .panel-body
       p
-         Hello, My name is Kshitiz and I am a coder, I live in Chennai and my home town is Deharadun. I have                                been doung coding past 3 years, but since than it has been a journey too good, I love to create                                    products, which can be sold in the online market.
+        //- Bio goes here
+        = bio
   
   .gallery-pannel.panel.panel-default
     .panel-heading(style='color:#3b5998')

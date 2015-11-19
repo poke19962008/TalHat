@@ -59,7 +59,29 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
 * Render the profile page
 */
 app.get("/profile", function (req, res){
-  res.render("profile.jade");
+  var mail = req.session.mail;
+  var pwd = req.session.password;
+
+  if((mail != undefined) && (pwd != undefined)){
+
+    mongo.verifyUser(mail, pwd, function result(err, docs){
+      if(!docs.isValid)
+        res.send("Invalid username pwd");
+      else{
+        mongo.getProfileData(mail, function result(err, profile){
+          if(err){
+            logger.log("info", "getProfileData | Mongo Retrieval Failed.");
+            res.send({"status": "serverFault"});
+          }
+
+          res.render("profile.jade", profile);
+        });
+      }
+    });
+
+  }else{
+    res.send("Login First <br> Session expired or broken.");
+  }
 });
 
 

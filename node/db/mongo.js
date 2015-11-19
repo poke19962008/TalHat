@@ -7,10 +7,15 @@ var collection = config['collection'];
 var url = config['mongo_path'];
 
 var queries = {
-  "getUser": function (mail, password, result){
+  "verifyUser": function (mail, password, result){
     mongoClient.connect(url, function(err, db) {
       var cur = db.collection('user_details').find({"mail": mail, "password": password});
-      cur.toArray(function (err, docs){ result(err, docs); });
+      cur.count(function (err, count){
+        if(count == 0)
+         result(err, { isValid: false});
+        else
+          result(err, { isValid: true });
+      });
     });
   },
 
@@ -144,10 +149,10 @@ var queries = {
       cur.count(function (err, count){
 
         if(count == 0)
-          result({ "found":  false });
+          result(err, { "found":  false });
         else if(count == 1){
           cur.toArray(function (err, docs){
-            result(docs[0]);
+            result(err, docs[0]);
           });
         }
 
