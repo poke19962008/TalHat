@@ -7,6 +7,10 @@ var collection = config['collection'];
 var url = config['mongo_path'];
 
 var queries = {
+  /**
+  * PARAMS:- mail and password
+  * RETURN:- { isValid: false} for Invalid and { isValid: true } for valid
+  */
   "verifyUser": function (mail, password, result){
     mongoClient.connect(url, function(err, db) {
       var cur = db.collection('user_details').find({"mail": mail, "password": password});
@@ -19,6 +23,10 @@ var queries = {
     });
   },
 
+  /**
+  * PARAMS:- mail
+  * RETURN:- {"found": false} and {"found": true}
+  */
   "checkUser": function (mail, result){
     mongoClient.connect(url, function (err, db){
       var cur = db.collection('user_details').find({ "mail": mail });
@@ -30,6 +38,10 @@ var queries = {
     });
   },
 
+  /**
+  * PARAMS:- mail, password, passion, name
+  * RETURN:- -NAN-
+  */
   "insertData": function (mail, password, passion, name, result){
     var initBio =  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.";
 
@@ -50,6 +62,10 @@ var queries = {
     });
   },
 
+  /**
+  * PARAMS:- -NAN-
+  * RETURN:- { passions: ["coder", "artist", ....]}
+  */
   "getAllPassion": function (result){
     mongoClient.connect(url , function (err, db){
 
@@ -71,6 +87,10 @@ var queries = {
     return ;
   },
 
+  /**
+  * PARAMS:- mail
+  * RETURN:- {passion: "..."}
+  */
   "getPassion": function (mail, result){
 
     mongoClient.connect(url, function (err, db){
@@ -87,6 +107,10 @@ var queries = {
     });
   },
 
+  /**
+  * PARAMS:- keyword
+  * RETURN:- [{passion: "coder"}, {passion: "artist"}, ....]
+  */
   "getPassionWithKeywords": function (keyword, result){
     mongoClient.connect(url, function (err, db){
       var cur = db.collection('passions').find({
@@ -106,7 +130,11 @@ var queries = {
     });
   },
 
-  "getPassionforProfile": function (result){
+  /**
+  * PARAMS:- -NAN-
+  * RETURN:- [{passion: "coder"}, {passion: "artist"}, ....]
+  */
+  "getAllPassions": function (result){
     mongoClient.connect(url, function (err, db){
       var cur = db.collection('passions').find({}, {
         "_id": false,
@@ -117,6 +145,10 @@ var queries = {
     });
   },
 
+  /**
+  * PARAMS:- passion
+  * RETURN:- { "found": true } or { "found": false }
+  */
   "checkPassionExist": function (passion, result){
     mongoClient.connect(url, function (err, db){
       var cur = db.collection('passions').find({
@@ -136,6 +168,10 @@ var queries = {
     });
   },
 
+  /**
+  * PARAMS:- mail
+  * RETURN:- {name: "..", bio: "..", mail: "..", passion: ".."}
+  */
   "getProfileData": function (mail, result) {
     mongoClient.connect(url, function (err, db){
       var cur = db.collection('user_details').find({
