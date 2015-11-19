@@ -55,13 +55,20 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
 
 });
 
+/**
+* Render the profile page
+*/
+app.get("/profile", function (req, res){
+  res.render("profile.jade");
+});
+
 
 /**
 ** TESTING
 */
-app.get("/test1", function (req, res){
-  res.render("profile.jade");
-  // console.log(req.session);
-});
+// app.get("/pro", function (req, res){
+//   res.render("profile.jade");
+//   // console.log(req.session);
+// });
 
 exports.init = app;
