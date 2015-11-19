@@ -131,6 +131,31 @@ var queries = {
     });
   },
 
+  "getProfileData": function (mail, result) {
+    mongoClient.connect(url, function (err, db){
+      var cur = db.collection('user_details').find({
+        "mail": mail,
+      },
+      {
+        "_id": false,
+        "password": false,
+      });
+
+      cur.count(function (err, count){
+
+        if(count == 0)
+          result({ "found":  false });
+        else if(count == 1){
+          cur.toArray(function (err, docs){
+            result(docs[0]);
+          });
+        }
+
+      });
+
+    });
+  },
+
 };
 
 function init(){

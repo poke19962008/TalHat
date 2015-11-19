@@ -1,3 +1,4 @@
 {"level":"info","message":"signup | new user -> test@gmail.com","timestamp":"2015-11-04T15:46:34.342Z"}
 {"level":"info","message":"login | wrong credential -> test@test.com","timestamp":"2015-11-04T15:48:03.136Z"}
 {"level":"info","message":"login | logged in -> test@gmail.com","timestamp":"2015-11-04T15:48:13.038Z"}
+{"level":"info","message":"signup | new user -> test@test.com","timestamp":"2015-11-19T01:03:38.878Z"}

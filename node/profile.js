@@ -66,9 +66,10 @@ app.get("/profile", function (req, res){
 /**
 ** TESTING
 */
-// app.get("/pro", function (req, res){
-//   res.render("profile.jade");
-//   // console.log(req.session);
+// app.get("/test1", function (req, res){
+//   mongo.getProfileData("test@test.com", function result (doc){
+//     res.send(doc);
+//   });
 // });
 
 exports.init = app;
