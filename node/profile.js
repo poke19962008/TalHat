@@ -85,13 +85,14 @@ app.get("/profile", function (req, res){
 });
 
 
+
 /**
 ** TESTING
 */
-// app.get("/test1", function (req, res){
-//   mongo.getProfileData("test@test.com", function result (doc){
-//     res.send(doc);
-//   });
-// });
+app.get("/test1", function (req, res){
+  mongo.incRecognize("test@test.com", function result (doc){
+    res.send(doc);
+  });
+});
 
 exports.init = app;

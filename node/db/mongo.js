@@ -52,6 +52,10 @@ var queries = {
         "passion": passion,
         "name": name,
         "bio": initBio,
+        "recognize": {
+          "count": 0,
+          "users": [],
+        },
       }, function (err, results){
         result(err);
       });
@@ -194,6 +198,16 @@ var queries = {
 
       });
 
+    });
+  },
+
+  "incRecognize": function (mail, user, result){
+    mongoClient.connect(url, function (err, db){
+      var cur = db.collection('user_details').update({
+        "mail": mail
+      },{
+         $inc: { "recognize.count": 1 } ,
+      });
     });
   },
 
