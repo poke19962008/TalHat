@@ -201,12 +201,38 @@ var queries = {
     });
   },
 
+  /**
+  * PARAMS:- mail[whose prof update], user[by whom]
+  * RETURN:- {name: "..", bio: "..", mail: "..", passion: ".."}
+  */
   "incRecognize": function (mail, user, result){
     mongoClient.connect(url, function (err, db){
       var cur = db.collection('user_details').update({
         "mail": mail
       },{
          $inc: { "recognize.count": 1 } ,
+         $push: { "recognize.users": user },
+      });
+    });
+  },
+
+  "getName": function(mail, result){
+    mongoClient.connect(url, function (err, db){
+      var cur = db.collection('user_details').find({
+        "mail": mail,
+      },{
+        "name": true,
+        "_id": false,
+      });
+
+      cur.count(function (err, count){
+        if(count == 0)
+          result(err, { "found": false });
+        else {
+          cur.toArray(function (err, doc){
+            result(err, doc[0]);
+          });
+        }
       });
     });
   },
