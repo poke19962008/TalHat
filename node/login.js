@@ -50,14 +50,17 @@ app.get('/login', function (req, res) {
         else {
             logger.log("info", "login | logged in ->", query.mail);
 
-            req.session.mail = query.mail;
-            req.session.password = query.password;
-
-            req.session.save(function (err){
-              if(err)
-                res.send({"status": "failed"});
-              else
-                res.send({"status": "success"});
+            mongo.getName(query.mail, function result(err, doc){
+              req.session.mail = query.mail;
+              req.session.password = query.password;
+              req.session.name = doc.name;
+              
+              req.session.save(function (err){
+                if(err)
+                  res.send({"status": "failed"});
+                else
+                  res.send({"status": "success"});
+              });
             });
           }
       });
@@ -123,8 +126,8 @@ app.get("/getPassionsWithKeywords", function (req, res){ // Return keywords when
 ** TESTING
 */
 // app.get("/test", function (req, res){
-//   mongo.checkPassionExist("Coder", function result(res){
-//     console.log(res);
+//   mongo.getName("test@test.com", function result(err, doc){
+//     res.send(doc)
 //   })
 // });
 

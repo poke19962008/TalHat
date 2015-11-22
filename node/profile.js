@@ -84,15 +84,32 @@ app.get("/profile", function (req, res){
   }
 });
 
+app.get("/incRecognize", function (req, res){
+  var mail = req.session.mail;
+  var pwd = req.session.password;
 
+  mong.verifyUser(mail, pwd, function result(err, docs){
+    if(!docs.isValid)
+      res.send("Invalid username pwd");
+    else{
+      var whoseMail = req.query.whoseMail;
+
+      if(whoseMail == ""){
+        res.send({ invalidParams: true });
+      }else{
+        var whoseName = req.session.name;
+
+      }
+    }
+  });
+
+});
 
 /**
 ** TESTING
 */
 app.get("/test1", function (req, res){
-  mongo.incRecognize("test@test.com", function result (doc){
-    res.send(doc);
-  });
+  res.send(req.session);
 });
 
 exports.init = app;
