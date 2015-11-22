@@ -37,7 +37,7 @@ function getQuery(req){ // Parse the url for parameters
 * All the GET request accessible from this server port
 */
 app.get("/getPassionsforProfile", function (req, res){
-  mongo.getPassionforProfile(function result(err, doc){
+  mongo.getAllPassions(function result(err, doc){
     res.send(doc);
   });
 });
