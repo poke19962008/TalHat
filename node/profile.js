@@ -66,7 +66,7 @@ app.get("/profile", function (req, res){
 
     mongo.verifyUser(mail, pwd, function result(err, docs){
       if(!docs.isValid)
-        res.send("Invalid username pwd");
+        res.send({ "status": "not valid user"});
       else{
         mongo.getProfileData(mail, function result(err, profile){
           if(err){
@@ -80,7 +80,7 @@ app.get("/profile", function (req, res){
     });
 
   }else{
-    res.send("Login First <br> Session expired or broken.");
+    res.redirect("/signin");
   }
 });
 
@@ -118,8 +118,8 @@ app.get("/incRecognize", function (req, res){
 /**
 ** TESTING
 */
-app.get("/test1", function (req, res){
-  res.send(req.session);
-});
+// app.get("/test1", function (req, res){
+//   res.send(req.session);
+// });
 
 exports.init = app;
