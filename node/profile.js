@@ -84,6 +84,9 @@ app.get("/profile", function (req, res){
   }
 });
 
+/**
+* Increase the recognize counter
+*/
 app.get("/incRecognize", function (req, res){
   var mail = req.session.mail;
   var pwd = req.session.password;
@@ -97,8 +100,15 @@ app.get("/incRecognize", function (req, res){
       if(whoseMail == ""){
         res.send({ invalidParams: true });
       }else{
-        var whoseName = req.session.name;
+        var whomName = req.session.name;
 
+        mongo.incRecognize(whoseMail, whomName, function result(err, doc){
+          if(err){
+            logger.log("info", "incRecognize | Mongo Retrieval Failed.");
+            res.send({"status": "serverFault"});
+          }
+          res.send({ status: "success" });
+        });
       }
     }
   });
