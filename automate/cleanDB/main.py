@@ -44,14 +44,14 @@ elif (opt == "-C") or (opt == "-colections") :
 elif (opt == "-E") or (opt == "-exception") :
     collections = db.collection_names()
     exceptions = sys.argv[2:]
-    ud = False
+    ud = True
 
     for exception in exceptions:
         if exception in collections:
             collections.remove(exception)
 
             if exception is "user_details":
-                ud = True
+                ud = False
         else:
             print "[ERROR] No " + exception + " colllection found."
 
