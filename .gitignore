@@ -1,4 +1,4 @@
 node/config.js
-node/data/*
+node/data/**
 node/automate/pyConfigs.json
 .DS_Store

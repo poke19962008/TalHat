@@ -1,0 +1,51 @@
+//- rightProfile.jade
+
+.col-lg-5(style='border-left:solid 2px #e7e7e7')
+  .panel(style='margin-top:2%;')
+    .panel-heading.popular-pas
+      span#name(div='') 
+        //- Name goes here 
+        = name
+    
+      span.recog_number.pull-right(div='')
+        button.btn.btn-primary.btn-sm(type='button') Recognise
+    
+    .panel-body(style='align-content:center')
+      .panel-footer(style='border:solid 1px #e7e7e7')
+        span.pull-left
+          .passion 
+            //- Passion goes here
+            = "#" + passion
+        .text-right
+          .huge-2 
+            = recognize.count
+        .clearfix
+      .row
+        .col-lg-12.col-col-md-12
+          img.profile-image(src='img/people/graphic_designer.jpg')
+  
+  .bio-pannel.panel.panel-default
+    .panel-heading(style='color:#3b5998')
+      i.fa.fa-eye.fa  Bio
+    
+    .panel-body
+      p
+        //- Bio goes here
+        = bio
+  
+  .gallery-pannel.panel.panel-default
+    .panel-heading(style='color:#3b5998')
+      i.fa.fa-film.fa  Gallery
+    
+    .panel-body
+      .row
+        #picture-1.col-lg-12.col-col-md-12
+          img.gallery-image(src='img/people/cake.jpg')
+    
+      .row
+        #picture-2.col-lg-12.col-col-md-12
+          img.gallery-image(src='img/people/dancer-side.jpg')
+    
+      .row
+        #picture-3.col-lg-12.col-col-md-12
+          img.gallery-image(src='img/people/artist.jpg')

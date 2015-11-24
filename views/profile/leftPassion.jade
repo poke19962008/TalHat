@@ -1,0 +1,15 @@
+//- leftPassion.jade
+
+.navbar-default.sidebar(role='navigation')
+  .sidebar-nav.navbar-collapse
+    ul#side-menu.nav
+      li.sidebar-search
+        .input-group.custom-search-form
+          input.form-control#passion-keyword(type='text', placeholder='Search...')
+          
+          span.input-group-btn
+            button.btn.btn-default(type='button')
+              i.fa.fa-search
+        // /input-group
+      
+      div#passions-list

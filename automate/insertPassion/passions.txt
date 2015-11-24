@@ -1,0 +1,62 @@
+Actor
+Artist- Graphic
+Archery
+Animator
+Boxer
+Badminton
+Basketball
+Billiards/Snooker
+Blogger
+Biker
+Chef
+Coder
+Cyclist
+Cartoonist
+Cricketer
+Doctor
+Debater
+Declamation
+Director
+Dancer
+Engineer
+Entrepreneur
+Footballer
+Fencer
+Foodie
+Hacker
+Hiker
+Gamer
+Guitarist
+Geneticist
+Graphic Designer
+Horse Riding
+Hockey
+Interior Designer
+Jumper
+Lawyer
+Music
+Martial Arts
+MUN
+Modeling
+Manager
+Magician
+Nail Artist
+Photographer
+Poet
+Pianist
+Painter
+Runner
+Rugby
+Reader
+Rapper
+Swimmer
+Shooter
+Stunting
+Shoe Designer
+Tennis Player
+Table Tennis Player
+Traveller Player
+Theater
+Writer
+Wall Artist
+Volunteer
