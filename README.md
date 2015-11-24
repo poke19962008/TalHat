@@ -1,4 +1,4 @@
-# Node Files
+# TalHat
 
 # ./config.js
 
@@ -39,4 +39,35 @@ exports.load = load;
 ```
 $ sudo rm -rf ./data
 $ sudo mongod --dbpath ./data
+```
+
+# Database Schema
+
+- user_details
+
+```
+{
+	name: String,
+	passion: String,
+	mail: String,
+	password: String,
+	bio: String,
+	recognize: {
+		count: Int,
+		users: [{
+			name: String,
+			mail: String,
+		}]
+	},
+}
+```
+
+- passions
+
+```
+{
+	_id: Int,
+	count: Int,
+	passion: String,
+}
 ```
