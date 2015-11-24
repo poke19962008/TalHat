@@ -202,20 +202,63 @@ var queries = {
   },
 
   /**
-  * PARAMS:- mail[whose prof update], user[by whom]
+  * PARAMS:- mail[whose prof update], user[by whom], mail[by whom]
   * RETURN:- {name: "..", bio: "..", mail: "..", passion: ".."}
   */
-  "incRecognize": function (mail, user, result){
+  "incRecognize": function (whoseMail, whomUser, whomMail, result){
     mongoClient.connect(url, function (err, db){
-      var cur = db.collection('user_details').update({
-        "mail": mail
-      },{
-         $inc: { "recognize.count": 1 } ,
-         $push: { "recognize.users": user },
+
+      function update(q){
+        var cur = db.collection('user_details').update({
+          "mail": whoseMail
+        }, q);
+      }
+
+      var cur1 = db.collection('user_details').find({
+        "mail": whoseMail,
+        "recognize.users": {
+          $in: [{
+            "name": whomUser,
+            "mail": whomMail,
+          }]
+        }
       });
+      cur1.count(function (err, count){
+
+        if(count == 1){
+          var q = {
+             $inc: { "recognize.count": -1 } ,
+             $pull: {
+               "recognize.users": {
+                 $in: [{
+                   "name": whomUser,
+                   "mail": whomMail,
+                 }]
+                }
+              }
+          };
+          update(q);
+        }else{
+          var q = {
+            $inc: { "recognize.count": 1 } ,
+            $push: {
+              "recognize.users": {
+                "name": whomUser,
+                "mail": whomMail,
+              }
+            }
+         };
+         update(q);
+        }
+      });
+
     });
   },
 
+  /**
+  * PARAMS:- mail
+  * RESULT:- { "found": false } or { "found": truw  }
+  */
   "getName": function(mail, result){
     mongoClient.connect(url, function (err, db){
       var cur = db.collection('user_details').find({
