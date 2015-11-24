@@ -257,7 +257,7 @@ var queries = {
 
   /**
   * PARAMS:- mail
-  * RESULT:- { "found": false } or { "found": truw  }
+  * RESULT:- { "found": false } or { "found": true  }
   */
   "getName": function(mail, result){
     mongoClient.connect(url, function (err, db){

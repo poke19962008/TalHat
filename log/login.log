@@ -35,3 +35,6 @@
 {"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-22T09:43:41.016Z"}
 {"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-22T09:58:40.629Z"}
 {"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-24T00:47:49.314Z"}
+{"level":"info","message":"signup | new user -> test2@test.com","timestamp":"2015-11-24T01:06:54.144Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-24T01:38:01.915Z"}
+{"level":"info","message":"signup | new user -> test2@test.com","timestamp":"2015-11-24T02:17:22.663Z"}
