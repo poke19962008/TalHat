@@ -2,7 +2,7 @@
 
 # ./config.js
 
-```
+```js
 function load(){
 	var config = {};
 
@@ -45,7 +45,7 @@ $ sudo mongod --dbpath ./data
 
 - user_details
 
-```
+```js
 {
 	name: String,
 	passion: String,
