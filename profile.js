@@ -74,7 +74,7 @@ app.get("/profile", function (req, res){
             res.send({"status": "serverFault"});
           }
 
-          res.render("profile.jade", profile);
+          res.render("profile.jade", {"profile": profile, "topUsers": ["abs", "abc", "foo", "bar"]});
         });
       }
     });

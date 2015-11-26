@@ -38,3 +38,9 @@
 {"level":"info","message":"signup | new user -> test2@test.com","timestamp":"2015-11-24T01:06:54.144Z"}
 {"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-24T01:38:01.915Z"}
 {"level":"info","message":"signup | new user -> test2@test.com","timestamp":"2015-11-24T02:17:22.663Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-26T01:43:10.341Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-26T02:23:25.185Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-26T02:34:57.688Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-26T06:44:28.580Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-26T07:03:08.963Z"}
+{"level":"info","message":"login | logged in -> test@test.com","timestamp":"2015-11-26T07:09:31.855Z"}
