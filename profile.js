@@ -74,7 +74,19 @@ app.get("/profile", function (req, res){
             res.send({"status": "serverFault"});
           }
 
-          res.render("profile.jade", {"profile": profile, "topUsers": ["abs", "abc", "foo", "bar"]});
+          res.render("profile.jade", {
+            "profile": profile,
+
+            "topUsers": [{
+              "recognize": 123,
+              "passion": "Coder",
+              "mail": "test2@test.com"
+            }, {
+              "recognize": 321,
+              "passion": "Artist",
+              "mail": "TESTING@TESTING.com"
+            }]});
+
         });
       }
     });
@@ -86,12 +98,14 @@ app.get("/profile", function (req, res){
 
 /**
 * Increase the recognize counter
+* PARAMS:- whoseMail
 */
 app.get("/updateRecognize", function (req, res){
   var mail = req.session.mail;
   var pwd = req.session.password;
 
-  mong.verifyUser(mail, pwd, function result(err, docs){
+  mongo.verifyUser(mail, pwd, function result(err, docs){
+
     if(!docs.isValid)
       res.send("Invalid username pwd");
     else{
@@ -103,13 +117,13 @@ app.get("/updateRecognize", function (req, res){
         var whomName = req.session.name;
         var whomMail = req.session.mail;
 
-        mongo.incRecognize(whoseMail, whomName, whomMail, function result(err, doc){
+        mongo.incRecognize(whoseMail, whomName, whomMail, function result(err, doc, res){
           if(err){
             logger.log("info", "incRecognize | Mongo Retrieval Failed.");
             res.send({"status": "serverFault"});
           }
-          res.send({ status: "success" });
         });
+        res.send({status: "success"});
       }
     }
   });
@@ -120,11 +134,16 @@ app.get("/updateRecognize", function (req, res){
 ** TESTING
 */
 // app.get("/test1", function (req, res){
-//   mongo.incRecognize("test2@test.com", "test", "test@test.com", function result(err, doc){
-//     if(err) console.log(err);
-//     res.send("success");
-//
+//   var passions_;
+//   mongo.getAllPassion(function result(err, doc){
+//     // console.log("inside block");
+//     // console.log(doc);
+//     passions_ = doc;
 //   });
+//
+//   console.log("Outside Bloc");
+//   console.log(passions_);
+//   res.send("success");
 // });
 
 exports.init = app;

@@ -22,3 +22,21 @@ $("#passion-keyword").on("click keyup", function (){
 
   });
 });
+
+$("#topUsersRecBtn").click(function (){
+  var mail = $(this).attr("alt");
+  console.log("Mail: " + mail);
+
+  $.ajax({
+    url: nodeHost + "updateRecognize",
+    data: { whoseMail: mail },
+    cache: false,
+    dataType: "json",
+  })
+  .done(function (msg){
+    console.log(msg);
+  })
+  .error(function (){
+    console.log("Cannot update recognize.");
+  });;
+});

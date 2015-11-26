@@ -49,13 +49,14 @@
                         .col-xs-3
                           img.img-circle(src='img/people/face1.jpg')
                         .col-xs-9.text-right
-                          .huge 7364
+                          .huge
+                            = topUsers[i].recognize
                           div 
-                            = "#" + topUsers[i]
+                            = "#" + topUsers[i].passion
                     a(href='#')
                       .panel-footer
                         span.pull-left
-                          btn.btn.btn-primary.btn-sm(type='btn', onclick='LoadDoc()') Recognise
+                          btn#topUsersRecBtn.btn.btn-primary.btn-sm(type='btn', alt=topUsers[i].mail) Recognise
                         span.pull-right
                           i.fa.fa-arrow-circle-right
                         .clearfix
@@ -71,13 +72,14 @@
                         .col-xs-3
                           img.img-circle(src='img/people/face1.jpg')
                         .col-xs-9.text-right
-                          .huge 7364
+                          .huge
+                            = topUsers[i].recognize
                           div 
-                            = "#" + topUsers[i]
+                            = "#" + topUsers[i].passion
                     a(href='#')
                       .panel-footer
                         span.pull-left
-                          btn.btn.btn-primary.btn-sm(type='btn', onclick='LoadDoc()') Recognise
+                          btn#topUsersRecBtn.btn.btn-primary.btn-sm(type='btn', alt=topUsers[i].mail) Recognise
                         span.pull-right
                           i.fa.fa-arrow-circle-right
                         .clearfix
